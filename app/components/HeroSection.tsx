@@ -162,57 +162,6 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Cursor outline bubble that follows pointer while section is in view */}
-      {isInView && (
-        <>
-          <div
-            aria-hidden
-            className="pointer-events-none fixed z-[60] mix-blend-screen transition-opacity duration-200"
-            style={{
-              left: `calc(${cursor.x}px)`,
-              top: `calc(${cursor.y}px)`,
-              width: isPointerDown ? 220 : 140,
-              height: isPointerDown ? 220 : 140,
-              transform: "translate(-50%, -50%)",
-              borderRadius: "50%",
-              border: "2px solid rgba(141,32,32,0.3)",
-              boxShadow: "0 0 40px rgba(141,32,32,0.2), inset 0 0 30px rgba(141,32,32,0.1)",
-              zIndex: 60,
-              pointerEvents: "none",
-              backdropFilter: "blur(8px)",
-              animation: "float 3s ease-in-out infinite",
-            }}
-          />
-          {/* SVG filter for water distortion effect */}
-          <svg style={{ position: 'absolute', width: 0, height: 0 }}>
-            <defs>
-              <filter id="water-distortion">
-                <feTurbulence
-                  type="fractalNoise"
-                  baseFrequency="0.02"
-                  numOctaves="3"
-                  result="noise"
-                >
-                  <animate
-                    attributeName="baseFrequency"
-                    values="0.02;0.025;0.02"
-                    dur="4s"
-                    repeatCount="indefinite"
-                  />
-                </feTurbulence>
-                <feDisplacementMap
-                  in="SourceGraphic"
-                  in2="noise"
-                  scale="8"
-                  xChannelSelector="R"
-                  yChannelSelector="G"
-                />
-              </filter>
-            </defs>
-          </svg>
-        </>
-      )}
-
       {/* Left-aligned content block starting from the left edge */}
       <div className="relative z-50 w-full text-left px-4 md:pl-12 lg:pl-16 md:pr-6">
         {/* Brand name and tagline */}
