@@ -1,7 +1,7 @@
 "use client"
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
-
+//newer ver
 export interface BentoCardProps {
   color?: string;
   title?: string;
@@ -35,14 +35,14 @@ const cardData: BentoCardProps[] = [
   {
     color: '#0a0a0a',
     title: 'Sarah Mitchell',
-    description: 'Neuva transformed our outdated website into a modern, high-performing platform. Our conversions increased by 40% in just two months!',
-    label: 'CEO, TechStart'
+    description: 'Our previous website felt like it was stuck in 2015. These guys brought it to life with a modern look that our audience can\'t stop talking about.',
+    label: 'Co-Founder @ CraftLab'
   },
   {
     color: '#0d0d0d',
     title: 'David Chen',
-    description: 'The team at Neuva built us a custom CRM that perfectly fits our workflow. Their attention to detail and communication was exceptional.',
-    label: 'Founder, GrowthLabs'
+    description: 'I didn\'t expect this level of polish. Every detail—from the animations to the UX—feels intentional and on point.',
+    label: 'Founder @ EduVerse'
   },
   {
     color: '#080808',

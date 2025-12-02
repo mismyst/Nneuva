@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-
+//new
 // Custom Reddit Icon Component
 const RedditIcon = ({ className = "w-6 h-6" }) => (
   <svg
@@ -21,50 +21,52 @@ const RedditIcon = ({ className = "w-6 h-6" }) => (
 export default function Footer() {
   return (
     <footer className="w-full bg-black border-t border-white/10 mt-20">
-      <div className="max-w-[1200px] mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 py-12 md:py-16">
+        
+        {/* Main footer content */}
+        <div className="relative flex flex-col md:flex-row items-start md:items-center gap-10 md:gap-0">
+          
+          {/* LEFT — Navigation (leftmost, pinned to left edge) */}
+          <div className="space-y-4 text-left md:absolute md:left-0">
+            <nav className="flex flex-col space-y-3 text-white/80 text-base md:text-lg">
+              <Link href="/" className="hover:text-white transition">Home</Link>
+              <Link href="/our-work" className="hover:text-white transition">Our Work</Link>
+              <Link href="/services" className="hover:text-white transition">Services</Link>
+            </nav>
+          </div>
 
-        {/* LEFT — Navigation */}
-        <div className="space-y-4 text-left">
-          <h3 className="text-xl font-bold text-white">Neuva</h3>
+          {/* CENTER — Large Logo Image (truly centered) */}
+          <div className="w-full flex justify-center order-first md:order-none">
+            <Image
+              src="/2.png"
+              alt="Neuva Logo"
+              width={600}
+              height={600}
+              className="opacity-90 w-[280px] sm:w-[350px] md:w-[400px] lg:w-[500px] h-auto"
+            />
+          </div>
 
-          <nav className="flex flex-col space-y-2 text-white/80 text-base">
-            <Link href="/" className="hover:text-white transition">Home</Link>
-            <Link href="/our-work" className="hover:text-white transition">Our Work</Link>
-            <Link href="/services" className="hover:text-white transition">Services</Link>
-          </nav>
-        </div>
+          {/* RIGHT — Social Media (rightmost, pinned to right edge) */}
+          <div className="flex flex-col text-left md:text-right md:absolute md:right-0">
+            <p className="text-white/70 text-base md:text-lg mb-4">Follow Us</p>
 
-        {/* CENTER — Logo Image */}
-        <div className="my-10 md:my-0">
-          <Image
-            src="/2.png"
-            alt="Neuva Logo"
-            width={500}
-            height={500}
-            className="opacity-80"
-          />
-        </div>
-
-        {/* RIGHT — Social Media */}
-        <div className="mt-10 md:mt-0 flex flex-col text-left md:text-right">
-          <p className="text-white/70 mb-3">Follow Us</p>
-
-          <div className="flex gap-5 md:justify-end">
-            <Link href="https://www.reddit.com" target="_blank">
-              <RedditIcon
-                className="w-6 h-6 text-[#8d2020] hover:text-[#b52a2a] transition"
-              />
-            </Link>
-            <Link href="https://www.linkedin.com" target="_blank">
-              <Linkedin
-                className="w-6 h-6 text-[#8d2020] hover:text-[#b52a2a] transition"
-              />
-            </Link>
-            <Link href="https://www.instagram.com" target="_blank">
-              <Instagram
-                className="w-6 h-6 text-[#8d2020] hover:text-[#b52a2a] transition"
-              />
-            </Link>
+            <div className="flex gap-5 md:justify-end">
+              <Link href="https://www.reddit.com" target="_blank">
+                <RedditIcon
+                  className="w-7 h-7 md:w-8 md:h-8 text-[#8d2020] hover:text-[#b52a2a] transition"
+                />
+              </Link>
+              <Link href="https://www.linkedin.com" target="_blank">
+                <Linkedin
+                  className="w-7 h-7 md:w-8 md:h-8 text-[#8d2020] hover:text-[#b52a2a] transition"
+                />
+              </Link>
+              <Link href="https://www.instagram.com" target="_blank">
+                <Instagram
+                  className="w-7 h-7 md:w-8 md:h-8 text-[#8d2020] hover:text-[#b52a2a] transition"
+                />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -2,25 +2,19 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import ColorBends from "./ColorBends";
-
+//newer ver
 export default function HeroSection() {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [cursor, setCursor] = useState({ x: -9999, y: -9999 });
   const [isPointerDown, setIsPointerDown] = useState(false);
   const [isInView, setIsInView] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [displayedText, setDisplayedText] = useState("");
+  const subtitleText = "Beyond Code. Beyond Ordinary.";
 
-  // main tagline that will have the bubble reveal per-letter
+// main tagline that will have the bubble reveal per-letter
   const mainTagline =
     "Professional Website Development, App Solutions & AI Workflow Automation.";
-
-  // supporting paragraph lines (left aligned)
-  const supporting = [
-    "Neuva delivers clean, functional, and scalable digital products tailored to your business.",
-    "Our solutions focus on performance, usability, and long-term maintainability.",
-    "AI automation helps eliminate repetitive manual work and boost operational efficiency.",
-    "We build with responsibility, transparency, and respect for your customers’ experience.",
-    "Choose Neuva if you want technology that is dependable, ethical, and built to scale.",
-  ];
 
   // per-letter reveal state
   const bubbleRadius = 140;
@@ -36,6 +30,47 @@ export default function HeroSection() {
     window.addEventListener("mouseup", onUp);
     return () => window.removeEventListener("mouseup", onUp);
   }, []);
+
+  // Trigger load animation on mount
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Typewriter effect for subtitle - repeats every 1 minute
+  useEffect(() => {
+    if (!isLoaded) return;
+    
+    const runTypewriter = () => {
+      let currentIndex = 0;
+      setDisplayedText("");
+      
+      const typewriterTimer = setInterval(() => {
+        if (currentIndex <= subtitleText.length) {
+          setDisplayedText(subtitleText.slice(0, currentIndex));
+          currentIndex++;
+        } else {
+          clearInterval(typewriterTimer);
+        }
+      }, 80);
+      
+      return typewriterTimer;
+    };
+    
+    // Run immediately on load
+    let typewriterTimer = runTypewriter();
+    
+    // Repeat every 1 minute (60000ms)
+    const repeatInterval = setInterval(() => {
+      clearInterval(typewriterTimer);
+      typewriterTimer = runTypewriter();
+    }, 60000);
+    
+    return () => {
+      clearInterval(typewriterTimer);
+      clearInterval(repeatInterval);
+    };
+  }, [isLoaded]);
 
   // hide bubble outline when section is out of view
   useEffect(() => {
@@ -109,12 +144,12 @@ export default function HeroSection() {
   return (
     <section
       ref={rootRef}
-      className="relative w-full min-h-[560px] flex items-center justify-center overflow-hidden bg-black"
+      className="relative w-full min-h-screen h-screen flex items-center justify-center overflow-hidden bg-black"
     >
       {/* ColorBends background — placed behind text */}
       <div className="absolute inset-0 pointer-events-none">
         <ColorBends
-          colors={["#8d2020"]}
+          colors={["#ea0909ff"]}
           rotation={30}
           speed={0.25}
           scale={1.2}
@@ -178,24 +213,25 @@ export default function HeroSection() {
         </>
       )}
 
-      {/* Left-aligned content block (centred vertically within the section) */}
-      <div className="relative z-50 px-6 max-w-[1000px] w-full text-left">
+      {/* Left-aligned content block starting from the left edge */}
+      <div className="relative z-50 w-full text-left px-4 md:pl-12 lg:pl-16 md:pr-6">
         {/* Brand name and tagline */}
-        <div className="mb-8">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-2">
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-2">
             <span className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent">
               NEUVA
             </span>
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl font-light tracking-wider text-[#8d2020] italic">
-            Beyond Code. Beyond Ordinary.
+          <p className="text-base md:text-xl lg:text-2xl font-medium tracking-wider text-[#ff6b6b] italic drop-shadow-[0_0_10px_rgba(255,107,107,0.5)]">
+            <span className="typewriter-text">{displayedText}</span>
+            <span className="typewriter-cursor">|</span>
           </p>
         </div>
 
         {/* content block with spacing */}
-        <div className="mt-8 max-w-[800px] space-y-6">
+        <div className="mt-6 md:mt-8 max-w-[800px] space-y-4 md:space-y-6">
           {/* MAIN TAGLINE: this line has per-letter reveal bubble */}
-          <h2 className="relative inline-block text-[clamp(28px,5vw,52px)] md:text-[clamp(38px,6.8vw,60px)] font-bold leading-tight text-white">
+          <h2 className={`relative inline-block text-[clamp(22px,5vw,52px)] md:text-[clamp(38px,6.8vw,60px)] font-bold leading-tight text-white slide-up-animation ${isLoaded ? 'slide-up-visible' : ''}`}>
             {/* base white layer (visible text) */}
             <span className="block select-none">{mainTagline}</span>
 
@@ -221,25 +257,41 @@ export default function HeroSection() {
             </span>
           </h2>
 
-          {/* supporting paragraphs (left aligned, neat font styles) */}
-          <div className="text-white/80 space-y-3 text-[17px] md:text-[18px] lg:text-[19px] leading-relaxed font-light">
-            {supporting.map((line, idx) => (
-              <p key={idx}>{line}</p>
-            ))}
-          </div>
+        </div>
+      </div>
 
-          {/* CTA row: "Book a Strategy Call" with white button */}
-          <div className="mt-8 flex items-center gap-4">
-            <a 
-              href="https://cal.com/neuva-forge" 
-              target="_blank" 
-              rel="noopener noreferrer"
+      {/* Fixed CTA button on right side - stays visible while scrolling */}
+      <a 
+        href="https://cal.com/neuva-forge" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed right-4 md:right-6 bottom-6 md:bottom-8 z-[100] group"
+      >
+        <button className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 md:py-4 text-sm md:text-lg text-black font-bold bg-white rounded-full hover:bg-white/95 transition shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 pr-6 md:pr-8">
+          <span>Book a Strategy Call</span>
+          <span className="arrow-container relative w-4 md:w-5 h-4 md:h-5 flex items-center justify-center">
+            <svg 
+              className="w-4 md:w-5 h-4 md:h-5 arrow-icon" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
             >
-              <button className="px-8 py-4 text-base md:text-lg text-black font-bold bg-white rounded-lg hover:bg-white/95 transition shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
-                Book a Strategy Call
-              </button>
-            </a>
-          </div>
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2.5} 
+                d="M17 8l4 4m0 0l-4 4m4-4H3" 
+              />
+            </svg>
+          </span>
+        </button>
+      </a>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[100] flex flex-col items-center gap-2 opacity-60">
+        <span className="text-white/60 text-xs tracking-widest uppercase">Scroll</span>
+        <div className="scroll-indicator w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+          <div className="scroll-dot w-1.5 h-1.5 bg-white rounded-full mt-2 animate-scrollBounce"></div>
         </div>
       </div>
 
@@ -331,6 +383,82 @@ export default function HeroSection() {
           66% {
             transform: translate(-50%, -50%) scale(0.98) rotate(-2deg);
           }
+        }
+
+        /* Cute arrow animation */
+        .arrow-icon {
+          animation: arrowBounce 1.5s ease-in-out infinite;
+        }
+
+        .group:hover .arrow-icon {
+          animation: arrowSlide 0.6s ease-in-out infinite;
+        }
+
+        @keyframes arrowBounce {
+          0%, 100% {
+            transform: translateX(0);
+          }
+          50% {
+            transform: translateX(4px);
+          }
+        }
+
+        @keyframes arrowSlide {
+          0%, 100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
+          50% {
+            transform: translateX(8px);
+            opacity: 0.7;
+          }
+        }
+
+        @keyframes scrollBounce {
+          0%, 100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          50% {
+            transform: translateY(12px);
+            opacity: 0.3;
+          }
+        }
+
+        .animate-scrollBounce {
+          animation: scrollBounce 1.5s ease-in-out infinite;
+        }
+
+        /* Slide up animation for main tagline */
+        .slide-up-animation {
+          opacity: 0;
+          transform: translateY(80px);
+          transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide-up-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* Typewriter cursor animation */
+        .typewriter-cursor {
+          display: inline-block;
+          animation: blink 1s step-end infinite;
+          margin-left: 2px;
+        }
+
+        @keyframes blink {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
+        }
+
+        .typewriter-text {
+          display: inline;
         }
       `}</style>
     </section>

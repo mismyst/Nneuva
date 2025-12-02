@@ -4,35 +4,40 @@ import OurWork from "./components/OurWork";
 import Testimonials from "./components/Testimonials";
 import Services from "./components/Services";
 import PlansCards from "./components/PlansCards";
+import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
-
+import ScrollReveal from "./components/ScrollReveal";
+//new
 export default function HomePage() {
   return (
-    
-    <div>
+    <div className="space-y-20">
       <Navbar />
-      <HeroSection/>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <OurWork/>
-      <br></br>
-       <br></br>
-        <br></br> <br></br>
-         <br></br>
-          <br></br>
-          <Services/>
-      <Testimonials/>
-      <br></br>
-      <br></br>
-      <PlansCards/>
-      <Footer/>
+      <HeroSection />
+      
+      <ScrollReveal>
+        <OurWork />
+      </ScrollReveal>
+      
+      <ScrollReveal delay={0.1}>
+        <Services />
+      </ScrollReveal>
       
       
-      
+      <ScrollReveal delay={0.1}>
+        <PlansCards />
+      </ScrollReveal>
 
+      <ScrollReveal delay={0.1}>
+        <Testimonials />
+      </ScrollReveal>
+      
+      <ScrollReveal delay={0.1}>
+        <FAQ />
+      </ScrollReveal>
+      
+      <ScrollReveal delay={0.2}>
+        <Footer />
+      </ScrollReveal>
     </div>
-    
   );
 }

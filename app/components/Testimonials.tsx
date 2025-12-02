@@ -1,7 +1,7 @@
 "use client";
 
 import MagicBento from "./Magicbento"; // ensure filename matches (Magicbento.tsx / MagicBento.tsx)
-
+//new
 // Quote Icon Component
 const QuoteIcon = ({ className = "w-8 h-8" }) => (
   <svg
@@ -16,20 +16,28 @@ const QuoteIcon = ({ className = "w-8 h-8" }) => (
 
 export default function Testimonials() {
   return (
-    <section className="min-h-screen w-screen bg-black text-white pt-16 md:pt-20">
-      {/* Heading Section */}
-      <div className="max-w-[1200px] mx-auto px-6 mb-12">
-        <div className="flex items-center gap-4">
-          <QuoteIcon className="w-10 h-10 md:w-12 md:h-12 text-[#8d2020]" />
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white">
-            Testimonials
+    <section className="min-h-screen w-full bg-black text-white py-12 md:py-16 lg:py-20 overflow-hidden">
+      {/* Heading Section - OUR WORK style */}
+      <div className="px-4 sm:px-6 md:px-12 lg:px-16 mb-8 md:mb-12">
+        <div className="max-w-[1200px]">
+          <h2
+            aria-label="Testimonials"
+            className="font-extrabold uppercase leading-[0.9] text-white"
+            style={{ fontSize: "clamp(3rem, 10vw, 6.5rem)" }}
+          >
+            <div>TESTI-</div>
+            <div className="mt-[-0.06em]">MONIALS</div>
           </h2>
-          <QuoteIcon className="w-10 h-10 md:w-12 md:h-12 text-[#8d2020] rotate-180" />
+          
+          {/* subtle dividing line */}
+          <div className="mt-4">
+            <div className="h-[1px] w-full bg-white/10" />
+          </div>
         </div>
       </div>
 
-      {/* wrapper ensures full viewport height/width */}
-      <div className="h-screen w-full relative">
+      {/* Bento grid wrapper - responsive height */}
+      <div className="min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] w-full relative px-2 sm:px-4">
         <MagicBento 
           textAutoHide={true}
           enableStars={true}
@@ -50,8 +58,8 @@ export default function Testimonials() {
         .bento-section {
           max-width: none !important;
           width: 100% !important;
-          padding-left: 1rem !important;
-          padding-right: 1rem !important;
+          padding-left: 0.5rem !important;
+          padding-right: 0.5rem !important;
         }
 
         /* Ensure the responsive grid uses full available width */
@@ -59,6 +67,34 @@ export default function Testimonials() {
           max-width: none !important;
           width: 100% !important;
           margin: 0 auto !important;
+        }
+        
+        /* Mobile-first responsive adjustments */
+        @media (max-width: 599px) {
+          .bento-section {
+            padding: 0.25rem !important;
+          }
+          
+          .card-responsive {
+            gap: 0.75rem !important;
+          }
+          
+          .card-responsive .card {
+            min-height: 160px !important;
+            padding: 1rem !important;
+            border-radius: 12px !important;
+          }
+          
+          .card-responsive .card p {
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+          }
+        }
+        
+        @media (min-width: 600px) and (max-width: 1023px) {
+          .card-responsive .card {
+            min-height: 180px !important;
+          }
         }
 
         /* Optional: let each card stretch more on large screens */
