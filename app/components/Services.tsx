@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-//new
+//new 's
 type Service = {
   title: string;
   headline: string;
@@ -58,6 +58,7 @@ export default function Services() {
 
   return (
     <section 
+      id="services"
       ref={sectionRef}
       className="w-full text-white bg-black py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 lg:px-16 overflow-hidden"
     >

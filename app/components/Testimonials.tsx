@@ -1,7 +1,7 @@
 "use client";
 
 import MagicBento from "./Magicbento"; // ensure filename matches (Magicbento.tsx / MagicBento.tsx)
-//new
+//new 's
 // Quote Icon Component
 const QuoteIcon = ({ className = "w-8 h-8" }) => (
   <svg
@@ -20,10 +20,16 @@ export default function Testimonials() {
       {/* Heading Section - OUR WORK style */}
       <div className="px-4 sm:px-6 md:px-12 lg:px-16 mb-8 md:mb-12">
         <div className="max-w-[1200px]">
+          {/* Quote icon before heading */}
+          <div className="mb-2">
+            <svg className="w-8 h-8 md:w-10 md:h-10 text-[#8d2020]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+            </svg>
+          </div>
           <h2
             aria-label="Testimonials"
             className="font-extrabold uppercase leading-[0.9] text-white"
-            style={{ fontSize: "clamp(3rem, 10vw, 6.5rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)" }}
           >
             <div>TESTI-</div>
             <div className="mt-[-0.06em]">MONIALS</div>

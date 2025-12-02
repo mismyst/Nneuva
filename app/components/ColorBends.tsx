@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-
+//new
 type ColorBendsProps = {
   className?: string;
   style?: React.CSSProperties;
@@ -178,7 +178,9 @@ export default function ColorBends({
     });
     rendererRef.current = renderer;
     (renderer as any).outputColorSpace = (THREE as any).SRGBColorSpace;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    // Lower pixel ratio on mobile for better performance
+    const isMobile = window.innerWidth < 768;
+    renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2));
     renderer.setClearColor(0x000000, transparent ? 0 : 1);
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
@@ -188,8 +190,8 @@ export default function ColorBends({
     const clock = new THREE.Clock();
 
     const handleResize = () => {
-      const w = container.clientWidth || 1;
-      const h = container.clientHeight || 1;
+      const w = container.clientWidth || container.offsetWidth || window.innerWidth || 1;
+      const h = container.clientHeight || container.offsetHeight || window.innerHeight || 1;
       renderer.setSize(w, h, false);
       (material.uniforms.uCanvas.value as THREE.Vector2).set(w, h);
     };
@@ -304,5 +306,5 @@ export default function ColorBends({
     };
   }, []);
 
-  return <div ref={containerRef} className={`w-full h-full relative overflow-hidden ${className}`} style={style} />;
+  return <div ref={containerRef} className={`w-full h-full relative overflow-hidden ${className || ''}`} style={{ minWidth: '100%', minHeight: '100%', ...style }} />;
 }

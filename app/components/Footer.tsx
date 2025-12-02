@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-//new
+//new's 's 
 // Custom Reddit Icon Component
 const RedditIcon = ({ className = "w-6 h-6" }) => (
   <svg
@@ -56,12 +56,12 @@ export default function Footer() {
                   className="w-7 h-7 md:w-8 md:h-8 text-[#8d2020] hover:text-[#b52a2a] transition"
                 />
               </Link>
-              <Link href="https://www.linkedin.com" target="_blank">
+              <Link href="https://www.linkedin.com/company/neuva-forge/?viewAsMember=true" target="_blank">
                 <Linkedin
                   className="w-7 h-7 md:w-8 md:h-8 text-[#8d2020] hover:text-[#b52a2a] transition"
                 />
               </Link>
-              <Link href="https://www.instagram.com" target="_blank">
+              <Link href="https://www.instagram.com/neuva.forge/" target="_blank">
                 <Instagram
                   className="w-7 h-7 md:w-8 md:h-8 text-[#8d2020] hover:text-[#b52a2a] transition"
                 />

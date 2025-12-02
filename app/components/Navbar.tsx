@@ -2,38 +2,95 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-//this is the newer vers than other 
+import { useState, useEffect } from "react";
+//this is the newer vers than other 'sss
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Handle scroll to hide/show navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const heroHeight = window.innerHeight; // Approximate hero section height
+      
+      // Hide navbar when scrolling down past hero section
+      if (currentScrollY > heroHeight * 0.5) {
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down
+          setIsVisible(false);
+        } else {
+          // Scrolling up
+          setIsVisible(true);
+        }
+      } else {
+        // Always show in hero section
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  // Smooth scroll to section
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setMobileOpen(false);
+  };
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 px-4 md:px-6">
+    <header 
+      className={`fixed inset-x-0 top-4 z-50 px-4 md:px-6 transition-all duration-300 ease-in-out ${
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+      }`}
+    >
       {/* NAV BAR (floating glass pill) */}
       <nav className="w-full max-w-4xl mx-auto px-5 md:px-8 py-3 flex items-center justify-between
                       bg-white/10 backdrop-blur-xl border border-white/20 rounded-full
                       shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
         {/* LEFT: Logo */}
         <Link href="/" className="flex items-center gap-2 z-30">
-          <Image src="/Logo.png" alt="Neuva Logo" width={32} height={32} priority />
+          <Image src="/Logoremove.png" alt="Neuva Logo" width={50} height={50} priority />
         </Link>
 
         {/* CENTER: Navigation links (desktop) */}
         <div className="hidden md:flex items-center gap-8">
-          <Link 
-            href="/" 
-            className="text-sm font-medium text-white/90 hover:text-white transition"
+          <a 
+            href="#work"
+            onClick={(e) => scrollToSection(e, "work")}
+            className="text-sm font-medium text-white/90 hover:text-white transition cursor-pointer"
           >
-            Home
-          </Link>
+            Work
+          </a>
+          <a 
+            href="#services"
+            onClick={(e) => scrollToSection(e, "services")}
+            className="text-sm font-medium text-white/90 hover:text-white transition cursor-pointer"
+          >
+            Services
+          </a>
+          <a 
+            href="#pricing"
+            onClick={(e) => scrollToSection(e, "pricing")}
+            className="text-sm font-medium text-white/90 hover:text-white transition cursor-pointer"
+          >
+            Pricing
+          </a>
         </div>
 
         {/* RIGHT: Book Now button */}
         <div className="flex items-center gap-3 z-30">
           <a
-            href="https://cal.com/neuva-forge"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#book"
+            onClick={(e) => scrollToSection(e, "book")}
             className="hidden md:inline-flex px-4 py-1.5 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition"
           >
             Book Now
@@ -64,13 +121,36 @@ export default function Navbar() {
         <div className="px-4">
           <ul className="flex flex-col gap-1 text-white/90 text-base">
             <li>
-              <Link href="/" className="block px-3 py-2 rounded-lg hover:bg-white/10 font-medium">Home</Link>
+              <a 
+                href="#work"
+                onClick={(e) => scrollToSection(e, "work")}
+                className="block px-3 py-2 rounded-lg hover:bg-white/10 font-medium"
+              >
+                Work
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#services"
+                onClick={(e) => scrollToSection(e, "services")}
+                className="block px-3 py-2 rounded-lg hover:bg-white/10 font-medium"
+              >
+                Services
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#pricing"
+                onClick={(e) => scrollToSection(e, "pricing")}
+                className="block px-3 py-2 rounded-lg hover:bg-white/10 font-medium"
+              >
+                Pricing
+              </a>
             </li>
             <li className="pt-2">
               <a 
-                href="https://cal.com/neuva-forge"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#book"
+                onClick={(e) => scrollToSection(e, "book")}
                 className="block w-full text-center px-3 py-2 rounded-full bg-white text-black font-medium hover:bg-white/90"
               >
                 Book Now

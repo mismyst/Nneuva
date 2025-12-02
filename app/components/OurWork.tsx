@@ -1,37 +1,12 @@
 "use client";
 import CircularGallery from "./CircularGallery";
 import React from "react";
-//new
+//new 's
 export default function OurWork() {
   return (
-    <section className="relative w-full bg-black min-h-screen overflow-hidden">
-      {/* --- Centered heading above gallery --- */}
-      <div className="w-full text-center pt-16 md:pt-20 pb-6">
-        <p className="text-white/50 text-sm md:text-base uppercase tracking-[0.3em] mb-3">
-          That&apos;s what we do
-        </p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-          Crafting Digital Experiences
-        </h2>
-      </div>
-
-      {/* --- TOP: Circular gallery --- */}
-      <div
-        className="pointer-events-none w-full flex justify-center pt-4 md:pt-8"
-        style={{ zIndex: 10 }}
-      >
-        <div style={{ width: 1200, height: 420, maxWidth: "95vw" }}>
-          <CircularGallery
-            bend={0}
-            textColor="#ffffff"
-            borderRadius={0.05}
-            scrollEase={0.02}
-          />
-        </div>
-      </div>
-
-      {/* --- LEFT-ALIGNED STACKED HEADING (below gallery) --- */}
-      <div className="relative z-20 mt-10 md:mt-14 px-6 md:px-12 lg:px-16">
+    <section id="work" className="relative w-full bg-black min-h-screen overflow-hidden">
+      {/* --- OUR WORK heading above gallery (stacked style) --- */}
+      <div className="relative z-20 pt-16 md:pt-20 pb-6 px-6 md:px-12 lg:px-16">
         <div className="max-w-[1200px]">
           <div className="flex items-start gap-6">
             {/* Heading column */}
@@ -40,7 +15,7 @@ export default function OurWork() {
                 aria-label="Our Work"
                 className="font-extrabold uppercase leading-[0.9] text-white"
                 style={{
-                  fontSize: "6.5rem", // base large size for desktop; we'll make responsive below
+                  fontSize: "6.5rem",
                 }}
               >
                 <div className="block md:hidden text-[4.25rem] leading-[0.9]">OUR</div>
@@ -58,10 +33,35 @@ export default function OurWork() {
               </div>
             </div>
 
-            {/* empty space to the right to mimic large negative space in reference */}
+            {/* empty space to the right */}
             <div className="hidden md:block flex-1" />
           </div>
         </div>
+      </div>
+
+      {/* --- TOP: Circular gallery --- */}
+      <div
+        className="pointer-events-none w-full flex justify-center pt-4 md:pt-8"
+        style={{ zIndex: 10 }}
+      >
+        <div style={{ width: 1200, height: 420, maxWidth: "95vw" }}>
+          <CircularGallery
+            bend={0}
+            textColor="#ffffff"
+            borderRadius={0.05}
+            scrollEase={0.02}
+          />
+        </div>
+      </div>
+
+      {/* --- THAT'S WHAT WE DO centered below gallery --- */}
+      <div className="w-full text-center mt-10 md:mt-14 pb-6">
+        <p className="text-white/80 text-lg md:text-xl uppercase tracking-[0.3em] mb-4">
+          That&apos;s what we do
+        </p>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+          Crafting Digital Experiences
+        </h2>
       </div>
 
       {/* --- CONTENT COLUMNS BELOW THE HEADING --- */}

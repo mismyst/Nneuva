@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-//new
+//new 's
 const CheckIcon = ({ className = "w-5 h-5" }) => (
   <svg
     viewBox="0 0 24 24"
@@ -30,19 +30,24 @@ type PlanCardProps = {
 
 export default function PlansCards() {
   return (
-    <section className="w-full min-h-screen px-4 sm:px-6 md:px-12 lg:px-16 py-16 sm:py-20 md:py-28 bg-black overflow-hidden">
-      <div className="max-w-[1600px] mx-auto">
-        <h2
-          aria-label="Plans"
-          className="font-extrabold uppercase leading-[0.9] text-white"
-          style={{ fontSize: "clamp(3rem, 10vw, 6.5rem)" }}
-        >
-          <div>PLANS</div>
-        </h2>
-        
-        {/* subtle dividing line */}
-        <div className="mt-4 mb-10 sm:mb-12 md:mb-16">
-          <div className="h-[1px] w-full bg-white/10" />
+    <section id="pricing" className="w-full min-h-screen px-4 sm:px-6 md:px-12 lg:px-16 py-16 sm:py-20 md:py-28 bg-black overflow-hidden">
+      <div className="max-w-[1600px]">
+        <div className="w-full md:w-1/2 lg:w-1/3">
+          <h2
+            aria-label="Plans"
+            className="font-extrabold uppercase leading-[0.9] text-white"
+            style={{
+              fontSize: "6.5rem",
+            }}
+          >
+            <div className="block md:hidden text-[4.25rem] leading-[0.9]">PLANS</div>
+            <div className="hidden md:block">PLANS</div>
+          </h2>
+          
+          {/* subtle dividing line */}
+          <div className="mt-4 mb-10 sm:mb-12 md:mb-16">
+            <div className="h-[1px] w-full bg-white/10" />
+          </div>
         </div>
 
         <div className="grid gap-6 sm:gap-8 md:gap-10 lg:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

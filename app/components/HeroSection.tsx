@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import ColorBends from "./ColorBends";
-//newer ver
+//newer ver 's 's
 export default function HeroSection() {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [cursor, setCursor] = useState({ x: -9999, y: -9999 });
@@ -147,23 +147,23 @@ export default function HeroSection() {
       className="relative w-full min-h-screen h-screen flex items-center justify-center overflow-hidden bg-black"
     >
       {/* ColorBends background — placed behind text */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none z-0" style={{ width: '100%', height: '100%' }}>
         <ColorBends
           colors={["#ea0909ff"]}
           rotation={30}
           speed={0.25}
-          scale={1.2}
-          frequency={1.4}
+          scale={1.0}
+          frequency={1.2}
           warpStrength={1.05}
-          mouseInfluence={0.6}
-          parallax={0.6}
+          mouseInfluence={0.4}
+          parallax={0.4}
           noise={0.08}
           transparent
         />
       </div>
 
       {/* Left-aligned content block starting from the left edge */}
-      <div className="relative z-50 w-full text-left px-4 md:pl-12 lg:pl-16 md:pr-6">
+      <div className="relative z-10 w-full text-left px-4 md:pl-12 lg:pl-16 md:pr-6">
         {/* Brand name and tagline */}
         <div className="mb-6 md:mb-8">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-2">
@@ -211,7 +211,7 @@ export default function HeroSection() {
 
       {/* Fixed CTA button on right side - stays visible while scrolling */}
       <a 
-        href="https://cal.com/neuva-forge" 
+        href="https://calendly.com/neuvatechno/30min" 
         target="_blank" 
         rel="noopener noreferrer"
         className="fixed right-4 md:right-6 bottom-6 md:bottom-8 z-[100] group"
