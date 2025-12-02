@@ -15,7 +15,7 @@ export default function Navbar() {
                       shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
         {/* LEFT: Logo */}
         <Link href="/" className="flex items-center gap-2 z-30">
-          <Image src="/logo.png" alt="Neuva Logo" width={32} height={32} priority />
+          <Image src="/Logo.png" alt="Neuva Logo" width={32} height={32} priority />
         </Link>
 
         {/* CENTER: Navigation links (desktop) */}
