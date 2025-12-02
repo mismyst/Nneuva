@@ -564,20 +564,60 @@ const MagicBento: React.FC<BentoProps> = ({
           
           .card-responsive {
             grid-template-columns: 1fr;
-            width: 90%;
+            width: 95%;
             margin: 0 auto;
             padding: 0.5rem;
+            gap: 1rem;
           }
           
+          /* Tablet small (600px - 767px) */
           @media (min-width: 600px) {
             .card-responsive {
               grid-template-columns: repeat(2, 1fr);
+              width: 92%;
+              gap: 1rem;
             }
           }
           
+          /* Tablet large (768px - 1023px) */
+          @media (min-width: 768px) {
+            .card-responsive {
+              grid-template-columns: repeat(2, 1fr);
+              width: 90%;
+              gap: 1.25rem;
+            }
+          }
+          
+          /* Desktop small - 13 inch (1024px - 1279px) */
           @media (min-width: 1024px) {
             .card-responsive {
+              grid-template-columns: repeat(3, 1fr);
+              width: 92%;
+              gap: 1.25rem;
+            }
+            
+            .card-responsive .card:nth-child(3) {
+              grid-column: span 1;
+              grid-row: span 1;
+            }
+            
+            .card-responsive .card:nth-child(4) {
+              grid-column: span 1;
+              grid-row: span 1;
+            }
+            
+            .card-responsive .card:nth-child(6) {
+              grid-column: auto;
+              grid-row: auto;
+            }
+          }
+          
+          /* Desktop medium - 15/16 inch (1280px - 1535px) */
+          @media (min-width: 1280px) {
+            .card-responsive {
               grid-template-columns: repeat(4, 1fr);
+              width: 90%;
+              gap: 1.5rem;
             }
             
             .card-responsive .card:nth-child(3) {
@@ -593,6 +633,15 @@ const MagicBento: React.FC<BentoProps> = ({
             .card-responsive .card:nth-child(6) {
               grid-column: 4;
               grid-row: 3;
+            }
+          }
+          
+          /* Large desktop (1536px+) */
+          @media (min-width: 1536px) {
+            .card-responsive {
+              width: 85%;
+              max-width: 1600px;
+              gap: 1.5rem;
             }
           }
           
@@ -657,17 +706,97 @@ const MagicBento: React.FC<BentoProps> = ({
             text-overflow: ellipsis;
           }
           
+          .text-clamp-3 {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          
+          .text-clamp-4 {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          
+          /* Mobile (up to 599px) */
           @media (max-width: 599px) {
             .card-responsive {
               grid-template-columns: 1fr;
-              width: 90%;
+              width: 95%;
               margin: 0 auto;
               padding: 0.5rem;
             }
             
             .card-responsive .card {
               width: 100%;
-              min-height: 180px;
+              min-height: auto !important;
+              aspect-ratio: auto !important;
+            }
+            
+            .card-responsive .card .testimonial-text {
+              font-size: 0.95rem !important;
+              line-height: 1.5 !important;
+            }
+          }
+          
+          /* Small tablet (600px - 767px) */
+          @media (min-width: 600px) and (max-width: 767px) {
+            .card-responsive .card {
+              min-height: auto !important;
+              aspect-ratio: auto !important;
+            }
+            
+            .card-responsive .card .testimonial-text {
+              font-size: 1rem !important;
+              line-height: 1.5 !important;
+            }
+          }
+          
+          /* Tablet (768px - 1023px) */
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .card-responsive .card {
+              min-height: auto !important;
+              aspect-ratio: auto !important;
+            }
+            
+            .card-responsive .card .testimonial-text {
+              font-size: 1.05rem !important;
+              line-height: 1.55 !important;
+            }
+          }
+          
+          /* 13 inch laptop (1024px - 1279px) */
+          @media (min-width: 1024px) and (max-width: 1279px) {
+            .card-responsive .card {
+              min-height: auto !important;
+              aspect-ratio: auto !important;
+            }
+            
+            .card-responsive .card .testimonial-text {
+              font-size: 1rem !important;
+              line-height: 1.5 !important;
+            }
+          }
+          
+          /* 15/16 inch laptop (1280px - 1535px) */
+          @media (min-width: 1280px) and (max-width: 1535px) {
+            .card-responsive .card .testimonial-text {
+              font-size: 1.1rem !important;
+              line-height: 1.55 !important;
+            }
+          }
+          
+          /* Large screens (1536px+) */
+          @media (min-width: 1536px) {
+            .card-responsive .card .testimonial-text {
+              font-size: 1.25rem !important;
+              line-height: 1.6 !important;
             }
           }
         `}
@@ -686,7 +815,7 @@ const MagicBento: React.FC<BentoProps> = ({
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-2">
           {cardData.map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[200px] w-full max-w-full p-5 rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
+            const baseClassName = `card flex flex-col justify-between relative w-full max-w-full p-4 sm:p-5 rounded-[16px] sm:rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
               enableBorderGlow ? 'card--border-glow' : ''
             }`;
 
@@ -716,22 +845,22 @@ const MagicBento: React.FC<BentoProps> = ({
                   {/* Clean testimonial card layout */}
                   <div className="flex flex-col h-full p-1">
                     {/* Quote icon */}
-                    <div className="mb-4">
-                      <svg className="w-8 h-8 text-[#8d2020] opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                    <div className="mb-2 sm:mb-4">
+                      <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#8d2020] opacity-60" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
                       </svg>
                     </div>
                     
                     {/* Testimonial text */}
-                    <p className="text-white text-lg md:text-xl lg:text-2xl font-light leading-relaxed tracking-wide">
+                    <p className="testimonial-text text-white text-base leading-relaxed tracking-wide flex-shrink-0">
                       {card.description}
                     </p>
                     
                     {/* Stats with mini charts for larger cards (index 2 & 3) */}
                     {(index === 2 || index === 3) && card.stats && (
-                      <div className="my-5 pt-4 border-t border-white/10 flex-1">
+                      <div className="my-3 sm:my-5 pt-3 sm:pt-4 border-t border-white/10 flex-1">
                         {/* Mini bar chart visualization */}
-                        <div className="flex items-end gap-2 h-20 mb-4">
+                        <div className="flex items-end gap-1 sm:gap-2 h-12 sm:h-20 mb-3 sm:mb-4">
                           {[65, 85, 45, 90, 70, 95, 80, 55, 88, 75, 92, 60].map((height, i) => (
                             <div
                               key={i}
@@ -742,11 +871,11 @@ const MagicBento: React.FC<BentoProps> = ({
                         </div>
                         
                         {/* Stats row */}
-                        <div className="flex gap-6 justify-between">
+                        <div className="flex gap-3 sm:gap-6 justify-between">
                           {card.stats.map((stat, idx) => (
                             <div key={idx} className="text-center flex-1">
-                              <div className="text-[#8d2020] text-2xl md:text-3xl font-bold tracking-tight">{stat.value}</div>
-                              <div className="text-white/50 text-xs uppercase tracking-wider mt-1">{stat.label}</div>
+                              <div className="text-[#8d2020] text-lg sm:text-2xl md:text-3xl font-bold tracking-tight">{stat.value}</div>
+                              <div className="text-white/50 text-[10px] sm:text-xs uppercase tracking-wider mt-1">{stat.label}</div>
                             </div>
                           ))}
                         </div>
@@ -755,20 +884,20 @@ const MagicBento: React.FC<BentoProps> = ({
                     
                     {/* Regular stats for other cards */}
                     {index !== 2 && index !== 3 && card.stats && (
-                      <div className="flex gap-6 my-5 pt-4 border-t border-white/10">
+                      <div className="flex gap-3 sm:gap-6 my-3 sm:my-5 pt-3 sm:pt-4 border-t border-white/10">
                         {card.stats.map((stat, idx) => (
                           <div key={idx} className="text-center">
-                            <div className="text-[#8d2020] text-2xl md:text-3xl font-bold tracking-tight">{stat.value}</div>
-                            <div className="text-white/50 text-xs uppercase tracking-wider mt-1">{stat.label}</div>
+                            <div className="text-[#8d2020] text-lg sm:text-2xl md:text-3xl font-bold tracking-tight">{stat.value}</div>
+                            <div className="text-white/50 text-[10px] sm:text-xs uppercase tracking-wider mt-1">{stat.label}</div>
                           </div>
                         ))}
                       </div>
                     )}
                     
                     {/* Author info */}
-                    <div className="mt-auto pt-4 border-t border-white/10">
-                      <h4 className="text-white font-semibold text-base tracking-wide">{card.title}</h4>
-                      <span className="text-white/50 text-sm font-light">{card.label}</span>
+                    <div className="mt-auto pt-3 sm:pt-4 border-t border-white/10">
+                      <h4 className="text-white font-semibold text-sm sm:text-base tracking-wide">{card.title}</h4>
+                      <span className="text-white/50 text-xs sm:text-sm font-light">{card.label}</span>
                     </div>
                   </div>
                 </ParticleCard>
@@ -893,22 +1022,22 @@ const MagicBento: React.FC<BentoProps> = ({
                 {/* Clean testimonial card layout */}
                 <div className="flex flex-col h-full p-1">
                   {/* Quote icon */}
-                  <div className="mb-4">
-                    <svg className="w-8 h-8 text-[#8d2020] opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="mb-2 sm:mb-4">
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#8d2020] opacity-60" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
                     </svg>
                   </div>
                   
                   {/* Testimonial text */}
-                  <p className="text-white text-lg md:text-xl lg:text-2xl font-light leading-relaxed tracking-wide">
+                  <p className="testimonial-text text-white text-base leading-relaxed tracking-wide flex-shrink-0">
                     {card.description}
                   </p>
                   
                   {/* Stats with mini charts for larger cards (index 2 & 3) */}
                   {(index === 2 || index === 3) && card.stats && (
-                    <div className="my-5 pt-4 border-t border-white/10 flex-1">
+                    <div className="my-3 sm:my-5 pt-3 sm:pt-4 border-t border-white/10 flex-1">
                       {/* Mini bar chart visualization */}
-                      <div className="flex items-end gap-2 h-20 mb-4">
+                      <div className="flex items-end gap-1 sm:gap-2 h-12 sm:h-20 mb-3 sm:mb-4">
                         {[65, 85, 45, 90, 70, 95, 80, 55, 88, 75, 92, 60].map((height, i) => (
                           <div
                             key={i}
@@ -919,11 +1048,11 @@ const MagicBento: React.FC<BentoProps> = ({
                       </div>
                       
                       {/* Stats row */}
-                      <div className="flex gap-6 justify-between">
+                      <div className="flex gap-3 sm:gap-6 justify-between">
                         {card.stats.map((stat, idx) => (
                           <div key={idx} className="text-center flex-1">
-                            <div className="text-[#8d2020] text-2xl md:text-3xl font-bold tracking-tight">{stat.value}</div>
-                            <div className="text-white/50 text-xs uppercase tracking-wider mt-1">{stat.label}</div>
+                            <div className="text-[#8d2020] text-lg sm:text-2xl md:text-3xl font-bold tracking-tight">{stat.value}</div>
+                            <div className="text-white/50 text-[10px] sm:text-xs uppercase tracking-wider mt-1">{stat.label}</div>
                           </div>
                         ))}
                       </div>
@@ -932,20 +1061,20 @@ const MagicBento: React.FC<BentoProps> = ({
                   
                   {/* Regular stats for other cards */}
                   {index !== 2 && index !== 3 && card.stats && (
-                    <div className="flex gap-6 my-5 pt-4 border-t border-white/10">
+                    <div className="flex gap-3 sm:gap-6 my-3 sm:my-5 pt-3 sm:pt-4 border-t border-white/10">
                       {card.stats.map((stat, idx) => (
                         <div key={idx} className="text-center">
-                          <div className="text-[#8d2020] text-2xl md:text-3xl font-bold tracking-tight">{stat.value}</div>
-                          <div className="text-white/50 text-xs uppercase tracking-wider mt-1">{stat.label}</div>
+                          <div className="text-[#8d2020] text-lg sm:text-2xl md:text-3xl font-bold tracking-tight">{stat.value}</div>
+                          <div className="text-white/50 text-[10px] sm:text-xs uppercase tracking-wider mt-1">{stat.label}</div>
                         </div>
                       ))}
                     </div>
                   )}
                   
                   {/* Author info */}
-                  <div className="mt-auto pt-4 border-t border-white/10">
-                    <h4 className="text-white font-semibold text-base tracking-wide">{card.title}</h4>
-                    <span className="text-white/50 text-sm font-light">{card.label}</span>
+                  <div className="mt-auto pt-3 sm:pt-4 border-t border-white/10">
+                    <h4 className="text-white font-semibold text-sm sm:text-base tracking-wide">{card.title}</h4>
+                    <span className="text-white/50 text-xs sm:text-sm font-light">{card.label}</span>
                   </div>
                 </div>
               </div>
