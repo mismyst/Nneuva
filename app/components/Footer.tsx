@@ -29,9 +29,27 @@ export default function Footer() {
           {/* LEFT — Navigation (leftmost, pinned to left edge) */}
           <div className="space-y-4 text-left md:absolute md:left-0">
             <nav className="flex flex-col space-y-3 text-white/80 text-base md:text-lg">
-              <Link href="/" className="hover:text-white transition">Home</Link>
-              <Link href="/our-work" className="hover:text-white transition">Our Work</Link>
-              <Link href="/services" className="hover:text-white transition">Services</Link>
+              <a 
+                href="#" 
+                onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className="hover:text-white transition cursor-pointer"
+              >
+                Home
+              </a>
+              <a 
+                href="#work" 
+                onClick={(e) => { e.preventDefault(); document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="hover:text-white transition cursor-pointer"
+              >
+                Our Work
+              </a>
+              <a 
+                href="#services" 
+                onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="hover:text-white transition cursor-pointer"
+              >
+                Services
+              </a>
             </nav>
           </div>
 

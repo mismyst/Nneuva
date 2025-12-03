@@ -167,10 +167,9 @@ export default function HeroSection() {
       <div className="relative z-10 w-full text-left px-4 md:pl-12 lg:pl-16 md:pr-6">
         {/* Brand name and tagline */}
         <div className="mb-6 md:mb-8">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-2" style={{ fontFamily: "'Sarpanch', sans-serif" }}>
-            <span className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent">
-              NEUVA
-            </span>
+          <h1 className="font-extrabold uppercase leading-[0.9] text-white tracking-tight mb-2" style={{ fontSize: "6.5rem", fontFamily: "'Sarpanch', sans-serif" }}>
+            <span className="block md:hidden text-[4.25rem] leading-[0.9] bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent">NEUVA</span>
+            <span className="hidden md:block bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent">NEUVA</span>
           </h1>
           <p className="text-base md:text-xl lg:text-2xl font-medium tracking-wider text-[#ff6b6b] italic drop-shadow-[0_0_10px_rgba(255,107,107,0.5)]">
             <span className="typewriter-text">{displayedText}</span>
@@ -181,7 +180,7 @@ export default function HeroSection() {
         {/* content block with spacing */}
         <div className="mt-6 md:mt-8 max-w-[800px] space-y-4 md:space-y-6">
           {/* MAIN TAGLINE: this line has per-letter reveal bubble */}
-          <h2 className={`relative inline-block text-[clamp(22px,5vw,52px)] md:text-[clamp(38px,6.8vw,60px)] font-bold leading-tight text-white slide-up-animation ${isLoaded ? 'slide-up-visible' : ''}`}>
+          <h2 className={`relative inline-block text-[clamp(18px,4vw,42px)] md:text-[clamp(28px,5vw,48px)] font-bold leading-tight text-white slide-up-animation ${isLoaded ? 'slide-up-visible' : ''}`}>
             {/* base white layer (visible text) */}
             <span className="block select-none">{mainTagline}</span>
 
@@ -212,7 +211,7 @@ export default function HeroSection() {
 
       {/* Fixed CTA button on right side - stays visible while scrolling */}
       <a 
-        href="https://calendly.com/neuvatechno/30min" 
+        href="https://cal.com/neuva-forge/strategycall" 
         target="_blank" 
         rel="noopener noreferrer"
         className="fixed right-4 md:right-6 bottom-6 md:bottom-8 z-[100] group"

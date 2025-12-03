@@ -29,7 +29,7 @@ export default function Testimonials() {
           <h2
             aria-label="Testimonials"
             className="font-extrabold uppercase leading-[0.9] text-white"
-            style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", fontFamily: "'Sarpanch', sans-serif" }}
           >
             <div>TESTI-</div>
             <div className="mt-[-0.06em]">MONIALS</div>

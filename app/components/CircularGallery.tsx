@@ -479,51 +479,35 @@ class App {
     const defaultItems = [
       {
         image: `https://picsum.photos/seed/1/800/600?grayscale`,
-        text: 'Bridge'
+        text: 'UI/UX Design'
       },
       {
         image: `https://picsum.photos/seed/2/800/600?grayscale`,
-        text: 'Desk Setup'
+        text: 'Web Development'
       },
       {
         image: `https://picsum.photos/seed/3/800/600?grayscale`,
-        text: 'Waterfall'
+        text: 'Brand Identity'
       },
       {
         image: `https://picsum.photos/seed/4/800/600?grayscale`,
-        text: 'Strawberries'
+        text: 'Digital Strategy'
       },
       {
         image: `https://picsum.photos/seed/5/800/600?grayscale`,
-        text: 'Deep Diving'
+        text: 'SEO Optimization'
       },
       {
         image: `https://picsum.photos/seed/16/800/600?grayscale`,
-        text: 'Train Track'
+        text: 'App Development'
       },
       {
         image: `https://picsum.photos/seed/17/800/600?grayscale`,
-        text: 'Santorini'
+        text: 'E-Commerce'
       },
       {
         image: `https://picsum.photos/seed/8/800/600?grayscale`,
-        text: 'Blurry Lights'
-      },
-      {
-        image: `https://picsum.photos/seed/9/800/600?grayscale`,
-        text: 'New York'
-      },
-      {
-        image: `https://picsum.photos/seed/10/800/600?grayscale`,
-        text: 'Good Boy'
-      },
-      {
-        image: `https://picsum.photos/seed/21/800/600?grayscale`,
-        text: 'Coastline'
-      },
-      {
-        image: `https://picsum.photos/seed/12/800/600?grayscale`,
-        text: 'Palm Trees'
+        text: 'AI Automation'
       }
     ];
     const galleryItems = items && items.length ? items : defaultItems;

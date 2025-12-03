@@ -67,7 +67,7 @@ export default function Services() {
         <h2
           aria-label="Services"
           className="font-extrabold uppercase leading-[0.9] text-white mb-8 sm:mb-10 fade-up"
-          style={{ fontSize: "clamp(3.5rem, 12vw, 7rem)" }}
+          style={{ fontSize: "clamp(3.5rem, 12vw, 7rem)", fontFamily: "'Sarpanch', sans-serif" }}
         >
           <div>SERVICES</div>
         </h2>

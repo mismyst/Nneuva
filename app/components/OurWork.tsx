@@ -16,6 +16,7 @@ export default function OurWork() {
                 className="font-extrabold uppercase leading-[0.9] text-white"
                 style={{
                   fontSize: "6.5rem",
+                  fontFamily: "'Sarpanch', sans-serif",
                 }}
               >
                 <div className="block md:hidden text-[4.25rem] leading-[0.9]">OUR</div>

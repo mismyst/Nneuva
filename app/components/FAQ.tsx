@@ -115,7 +115,7 @@ export default function FAQ() {
         <div className="mt-16 text-center">
           <p className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">Still have questions?</p>
           <a
-            href="https://cal.com/your-username"
+            href="https://cal.com/neuva-forge/strategycall"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 bg-[#8d2020] text-white font-semibold rounded-lg hover:bg-[#b52a2a] transition-colors duration-200 shadow-lg hover:shadow-xl"

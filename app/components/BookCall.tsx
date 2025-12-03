@@ -14,6 +14,7 @@ export default function BookCall() {
             className="font-extrabold uppercase leading-[0.9] text-white"
             style={{
               fontSize: "6.5rem",
+              fontFamily: "'Sarpanch', sans-serif",
             }}
           >
             <div className="block md:hidden text-[4.25rem] leading-[0.9]">BOOK A</div>
@@ -32,12 +33,14 @@ export default function BookCall() {
         <p className="text-white/60 text-base md:text-lg max-w-xl mb-8 md:mb-12">
           Ready to transform your digital presence? Schedule a free strategy call with our team.
         </p>
+      </div>
 
-        {/* Cal.com embed container */}
-        <div className="w-full max-w-[1200px]">
+      {/* Cal.com embed container - centered and full width */}
+      <div className="w-full flex justify-center">
+        <div className="w-full">
           <CalEmbed
             calLink="neuva-forge/strategycall"
-            height={700}
+            height={900}
           />
         </div>
       </div>

@@ -38,6 +38,7 @@ export default function PlansCards() {
             className="font-extrabold uppercase leading-[0.9] text-white"
             style={{
               fontSize: "6.5rem",
+              fontFamily: "'Sarpanch', sans-serif",
             }}
           >
             <div className="block md:hidden text-[4.25rem] leading-[0.9]">PLANS</div>
@@ -56,10 +57,11 @@ export default function PlansCards() {
             subtitle="Build Essentials"
             price="$299 – $499"
             bullets={[
-              "Clean, responsive website (up to 5 pages)",
+              "Clean, responsive website (up to 3 pages)",
               "Mobile-first UI",
               "Basic brand messaging assistance",
               "Contact form + essential integrations",
+              "Basic authentication + Admin Page",
               "Basic SEO setup",
               "7-day post-launch support",
               "Fast delivery & secure hosting guidance",
@@ -94,6 +96,7 @@ export default function PlansCards() {
               "Full custom web platform / portal / SaaS system",
               "AI workflow automation",
               "Custom CRM, booking, inventory or staff systems",
+              "Advance CDN provider with designated Cloud services according to need",
               "Database architecture + secure authentication",
               "Advanced dashboards & analytics",
               "Priority support + monthly improvements",
@@ -162,17 +165,20 @@ function PlanCard({
           ))}
         </ul>
 
-        <button
+        <a
+          href="https://cal.com/neuva-forge/strategycall"
+          target="_blank"
+          rel="noopener noreferrer"
           className="
             w-full px-4 py-3 sm:py-4 rounded-full
             bg-gray-700 hover:bg-gray-600
             text-white text-base sm:text-lg font-semibold
             shadow-[0_4px_14px_rgba(0,0,0,0.35)]
-            transition
+            transition text-center block
           "
         >
           {ctaText}
-        </button>
+        </a>
       </div>
     </article>
   );
