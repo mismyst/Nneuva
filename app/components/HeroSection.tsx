@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import ColorBends from "./ColorBends";
+import "../globals.css";
 //newer ver 's 's
 export default function HeroSection() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -166,7 +167,7 @@ export default function HeroSection() {
       <div className="relative z-10 w-full text-left px-4 md:pl-12 lg:pl-16 md:pr-6">
         {/* Brand name and tagline */}
         <div className="mb-6 md:mb-8">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-2">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-2" style={{ fontFamily: "'Sarpanch', sans-serif" }}>
             <span className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent">
               NEUVA
             </span>
