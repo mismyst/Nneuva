@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Neuva",
   description: "Brand Your Way",
   icons : {
-    icon :"/favicon.ico"
+    icon :["/favicon.ico"]
 
   }
 };
